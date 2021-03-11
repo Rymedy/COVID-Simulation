@@ -16,11 +16,11 @@ class Person {
         this.angle = 0;
         this.status = status;
     }
-
+    // Storing this.r (radius property) into the "newRadius" variable which is used for slider (user input)
     updateRadius(newRadius) {
         this.r = newRadius;
     }
-
+    // Storing this.v (velocity property) into the "newVelocity" variable which is used for slider (user input)
     updateVelocity(newVelocity) {
         this.v = newVelocity;
     }
@@ -31,14 +31,14 @@ class Person {
         this.y += this.v * Math.sin(this.angle);
         if((this.x < this.r)||(this.x > canvas.width - this.r)) {
             this.angle = Math.PI - this.angle;
-            if(this.x < this.r) this.x = this.r;
+            if(this.x < newRadius) this.x = this.r;
             if(this.x > canvas.width - this.r) {
                 this.x = canvas.width - this.r;
             }
         }
         if((this.y < this.r)||(this.y > canvas.height - this.r)) {
             this.angle = Math.PI*2 - this.angle;
-            if(this.y < this.r) this.y = this.r;
+            if(this.y < newRadius) this.y = this.r;
             if(this.y > canvas.height - this.r) {
                 this.y = canvas.height - this.r;
             }
@@ -55,7 +55,6 @@ class Person {
             target.angle = Math.atan2(dy,dx);
             this.angle = Math.PI - this.angle + target.angle *2;
             if((this.v > 0)&&(target.v > 0)) {
-                this.v = (target.v + this.v)/2;
                 target.v = this.v;
             }
             this.move();
@@ -113,10 +112,10 @@ const initCanvas = () => {
         const person = new Person("negative");
         if (i==0) person.status = "infected";
         if (i < num) {
-            //person.v = document.getElementById("num2").value;
-            person.v = 1;
+            person.v = document.getElementById("num2").value;  
             person.angle = Math.random() * Math.PI+2;
-            person.r = document.getElementById("num1").value;
+            person.r = document.getElementById("num1").value; // <-- when i use this sometimes when the ball hits the edge of the canvas the
+            //ball just decides to disappear
         }
         persons.push(person);
     }

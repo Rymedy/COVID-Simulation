@@ -105,3 +105,15 @@ button {
   background: white;
   cursor: pointer;
 }
+::-moz-selection {
+    background-color: transparent;
+    color: white;
+}
+
+::selection {
+    background-color: transparent;
+    color: white;
+}
+
+.myclass::-moz-selection,
+.myclass::selection { ... }
