@@ -1,0 +1,42 @@
+<html>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="styles.css">
+<script src="mainsim.js"></script>
+	<head>
+		<div class="topnav">
+		<h1 style="color:white;">COVID-19<span style="color: #f300b4;"> | </span><b>Simulator</b></h1>
+		</div>
+	</head>
+	<body onload="init()">
+		<div class="sim">
+		<canvas id="graph" width="1000" height="100" style="border:2px solid #000000; background-color: #4a4a4a; position: absolute; top: 685;"></canvas><br>
+		<canvas id="city" width="600" height="600" style="border:2px solid #000000; background-color: #fafafa; position: absolute; top: 100%; left: 200;"></canvas>
+		</div>
+		<div class="leftcontent">
+			<span class="dotgreen"></span><b><span> = Healthy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b>
+			<span class="dotred"></span><b><span> = Infected</span></b>
+			<br>
+			<br>
+			<h1>Currently Known Bugs</h1>
+			<li>People disappearing when colliding with edge of canvas.</li>
+			<li>Random sudden increase in speed when this.v is = to value <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of velocity slider.</li>
+		</div>
+		<div class="rightcontent">
+	<b><h1>Modifiers</h1></b>
+    <b><span>Population: <span id="populationValue">10</span></span></b>
+    <input type="range" class="slider" id="num" value="10" min="10" max="100" style="width: 30rem">
+    <br>
+    <b><span>Size: <span id="radiusValue">10</span></span></b>
+    <input type="range" class="slider" id="num1" value="10" min="5" max="20" style="width: 30rem">
+    <br>
+    <b><span>Velocity: <span id="speedValue">1</span></span></b>
+    <input type="range" class="slider" id="num2" value="1" min="1" max="2" style="width: 30rem">
+    <br>
+    <button class="btn aqua-gradient" onclick="startSim()">Play</button>
+	</body>
+	<script>
+
+
+	</script>
+</html>
