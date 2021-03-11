@@ -31,14 +31,14 @@ class Person {
         this.y += this.v * Math.sin(this.angle);
         if((this.x < this.r)||(this.x > canvas.width - this.r)) {
             this.angle = Math.PI - this.angle;
-            if(this.x < newRadius) this.x = this.r;
+            if(this.x < self.r) this.x = this.r;
             if(this.x > canvas.width - this.r) {
                 this.x = canvas.width - this.r;
             }
         }
         if((this.y < this.r)||(this.y > canvas.height - this.r)) {
             this.angle = Math.PI*2 - this.angle;
-            if(this.y < newRadius) this.y = this.r;
+            if(this.y < self.r) this.y = this.r;
             if(this.y > canvas.height - this.r) {
                 this.y = canvas.height - this.r;
             }
@@ -49,12 +49,13 @@ class Person {
         const dx = target.x - this.x;
         const dy = target.y - this.y;
         const d  = (dx ** 2 + dy ** 2)**0.5;
-        if(d<this.r*2){
+        if(d<this.r*2) {
             if(this.status == "infected") target.status = "infected";
             if(target.status == "infected") this.status = "infected";
             target.angle = Math.atan2(dy,dx);
             this.angle = Math.PI - this.angle + target.angle *2;
             if((this.v > 0)&&(target.v > 0)) {
+                this.v = target.v;
                 target.v = this.v;
             }
             this.move();
@@ -113,9 +114,8 @@ const initCanvas = () => {
         if (i==0) person.status = "infected";
         if (i < num) {
             person.v = document.getElementById("num2").value;  
+            person.r = document.getElementById("num1").value; 
             person.angle = Math.random() * Math.PI+2;
-            person.r = document.getElementById("num1").value; // <-- when i use this sometimes when the ball hits the edge of the canvas the
-            //ball just decides to disappear
         }
         persons.push(person);
     }
@@ -137,10 +137,10 @@ const startSim = () => {
     initCanvas();
     elapsedTime = 0;
     if (timer != null) clearInterval(timer);
-    timer = setInterval(simulate);
+    timer = setInterval(simulation);
 }
 
-const simulate = () => {
+const simulation = () => {
     for (const person of persons) {
         person.move();
         for (const target of persons) {
