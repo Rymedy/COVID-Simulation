@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="styles.css">
 <script src="main.js"></script>
 	<head>
+		<title>COVID-19 Simulation</title>
 		<div class="topnav">
 		<h1 style="color:white;">COVID-19<span style="color: #f300b4;"> | </span><b>Simulator</b></h1>
 		</div>
@@ -22,6 +23,7 @@
 		</div>
 		<div class="rightcontent">
 	<b><h1>Modifiers</h1></b>
+	<!-- Sliders to modify relative variables !-->
     <b><span>Population: <span id="populationValue">10</span></span></b>
     <input type="range" class="slider" id="num" value="10" min="10" max="100" style="width: 30rem">
     <br>
@@ -31,6 +33,7 @@
     <b><span>Speed: <span id="velocityValue">1</span></span></b>
     <input type="range" class="slider" id="num2" value="1" min="1" max="5" style="width: 30rem">
     <br>
+    <!-- Button to initiate the "startSim()" method/function !-->
     <button class="btn aqua-gradient" onclick="startSim()">Play</button>
 	</body>
 	<script>
