@@ -52,7 +52,7 @@ class Person {
         const dx = target.x - this.x;
         const dy = target.y - this.y;
         // Pythagoras Theorm is used to calculate the distance between the two circles (hypotenuse) for variable 'd' when both the opposite and adjacent sides are known.
-        //c^2 = a^2 + b^2
+        //c = sqrt(a^2 + b^2)
         const d  = (dx ** 2 + dy ** 2)**0.5;
         // If the distance between the two circles is smaller than the diamater of one of the circles:
         if(d<this.r*2) {
